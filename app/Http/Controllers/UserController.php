@@ -16,7 +16,7 @@ Class UserController extends Controller {
     }
 
     public function getUsers(){
-        $users = app('db') ->select ("SELECT * FROM tbluser");
+        $users = app('db') ->select ("SELECT * FROM tbluser2");
         return $this->successResponse($users);
  }
 
@@ -30,7 +30,7 @@ Class UserController extends Controller {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $users = app('db')->select("SELECT * FROM tbluser WHERE username='$username' and password='$password'");
+        $users = app('db')->select("SELECT * FROM tbluser2 WHERE username='$username' and password='$password'");
 
         if(!$users || !$password){
             return 'Invalid credentials!';
@@ -44,7 +44,7 @@ Class UserController extends Controller {
     public function index()
     {
     $users = User::all();
-    return response()->json($users);
+    return $this->sucessResponse($users);
     }
 
     public function create(Request $request ){
